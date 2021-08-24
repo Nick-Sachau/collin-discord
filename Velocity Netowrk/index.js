@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const { token } = require('./token.json');
-const prefix = '!';
+const prefix = '?';
 
 const fs = require('fs');
+const { description } = require('./commands/test copy');
 client.commands = new Discord.Collection();
 
 const commandFiles = fs
@@ -15,15 +16,19 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
+const welcome = require('./commands/welcome.js')
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+  console.log(`Logged in as ${client.user.tag}!`)
+})
 
 client.on('guildMemberAdd', guildMember => {
-  let welcomeRule = guildMember.guild.roles.cache.find(role => role.name === 'Member');
+  let welcomeRule = guildMember.guild.roles.cache.find(role => role.name === 'Welcome');
 
   guildMember.roles.add(welcomeRule)
+
+  let newUser = guildMember.user.username;
+  welcome(client, newUser)
 })
 
 client.on('message', message => {
@@ -37,6 +42,9 @@ client.on('message', message => {
     case 'test':
       client.commands.get('test').execute(message, args, client);
       console.log('testing')
+      break;
+    case 'clear':
+      client.commands.get('clear').execute(message, args, client);
       break;
   }
 });
