@@ -28,7 +28,8 @@ client.on('guildMemberAdd', guildMember => {
   guildMember.roles.add(welcomeRule)
 
   let newUser = guildMember.user.username;
-  welcome(client, newUser)
+  let userPicture = guildMember.icon
+  welcome(client, newUser, userPicture)
 })
 
 client.on('message', message => {

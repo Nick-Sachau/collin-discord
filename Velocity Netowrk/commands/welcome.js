@@ -1,7 +1,7 @@
 const { MessageAttachment } = require('discord.js')
 const nodeHtmlToImage = require('node-html-to-image');
 
-module.exports = (client, newUser) => {
+module.exports = (client, newUser, userPicture) => {
     console.log('new person joined')
     welcomeMessage();
 
@@ -16,7 +16,7 @@ module.exports = (client, newUser) => {
             <style>
                 body {
                     font-family: "Poppins", Arial, Helvetica, sans-serif;
-                    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.istockphoto.com%2Fphotos%2Fbeautiful-blue-galaxy-background-picture-id474932998%3Fk%3D6%26m%3D474932998%26s%3D170667a%26w%3D0%26h%3D7SVf8VrFj060x46O9dRJpYwVcjmSj7BvjLlDM8AryaI%3D&imgrefurl=https%3A%2F%2Fwww.istockphoto.com%2Fphoto%2Fbeautiful-blue-galaxy-background-gm474932998-64949791&tbnid=a9LbDXz3UweeLM&vet=12ahUKEwj35tf968jyAhWPADQIHU4bADYQMyhDegQIARB6..i&docid=bS6Zaanp-S6lgM&w=537&h=322&q=galaxy%20background&ved=2ahUKEwj35tf968jyAhWPADQIHU4bADYQMyhDegQIARB6');
+                    background-image: url('https://images.unsplash.com/photo-1528484701073-2b22dc76649e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80');
                     background-repeat: no-repeat;
                     background-size: cover;
                     color: #fff;
@@ -29,7 +29,6 @@ module.exports = (client, newUser) => {
             </style>
             </head>
             <body>
-                <p>Testing Perfection</p>
                 <h1>${newUser}</h1>
             </body>
         </html>
